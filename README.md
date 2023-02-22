@@ -28,13 +28,17 @@ At launch it came with the following features
 
 ## Technology Misfit
 
-While the back-end was developed using a MySQL database, I soon came to the realization that not only was MySQL not a fit to build what is essentially a graph database, but also that graph database platforms like [Neo4j](https://neo4j.com/) would be able to serve the need in a much more efficient manner. 
+While the back-end was developed using a MySQL database, I soon came to the realization that not only was MySQL not a fit to build what is essentially a graph database, but also that graph database platforms like [Neo4j](https://neo4j.com/) would be able to serve the need  much more efficiently. 
 
-Using MySQL to store and retrieve graphs also made it difficult to use an ORM for the purpose, which forced the creation of a non-standard/framework conformant (i.e. Hibernate, Spring Data) data access layer. 
+Using MySQL to store and retrieve graphs also made it difficult to use an ORM for the purpose, which forced the creation of a non-standard/framework conformant data access layer. 
 
 ## Why Was it Mothballed for So Long?
 
-The project was mothballed because without Docker, it was difficult to create simplified installation and deployment instructions of all the dependencies to distribute among peers for review and co-development. 
+### No Docker to Create Repeatable Environments
+
+The project was mothballed because without Docker at the time, it was difficult to create simplified installation and deployment instructions of all the service dependencies to distribute among peers for review and co-development. 
+
+### GWT Dependencies not in Maven Repositories
 
 Also, since the application was developed using GWT and as most GWT libraries had not at the time been leveraging centralized repositories like Maven for software distribution, pulling in 3rd party dependencies required a complex set of instructions / scripts to package the right versions of dependencies together.
 
@@ -82,6 +86,40 @@ https://www.sencha.com/products/gxt/ (used a legacy gxt-2.2.4-gwt22 library for 
 
 Running via Maven in GWT Dev Mode
 ---------------------------------
+
+### Prerequisites
+
+#### Maven
+
+Download and install maven
+
+#### JDK 8
+
+Only tested with Oracle JDK 8 to date
+
+#### GWT 2.5.1
+
+I have not had a chance to port this beyond GWT 2.5.1
+
+#### gxt-2.2.4-gwt22 Downloaded
+
+You need to download and install gxt-2.2.4-gwt22.jar into a local maven repo.  
+
+This is the cleanest way to handle jar dependencies that cannot be found on any maven code repository. 
+
+Note: On windows, below commands are best run in Cygwin with wget and unzip packages installed. 
+
+```
+cd WebApp-Maven
+mkdir jars
+cd jars
+wget http://www.java2s.com/Code/JarDownload/gxt/gxt-2.2.4-gwt22.jar.zip
+unzip gxt-2.2.4-gwt22.jar.zip
+rm gxt-2.2.4-gwt22.jar.zip
+cd ..
+mkdir local-maven-repo
+sh ./regiser-jars.sh
+```
 
 ### Start Dependencies
 
