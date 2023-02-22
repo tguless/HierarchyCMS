@@ -1,0 +1,22 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui">
+	<ui:style>
+
+	</ui:style>
+	<g:HTMLPanel addStyleNames="hablar-OpenChatWidget">
+		<div class="form">
+			<h2><ui:msg key="openNewChatLabelText">Open a New Chat</ui:msg></h2>
+			<p>
+				<label><ui:msg key="jabberIdLabelText">Jabber ID:</ui:msg></label>
+				<g:TextBox ui:field="jabberId" />
+				<g:Label ui:field="jabberIdError" addStyleNames="hablar-errorColor" />
+			</p>
+			<p><g:CheckBox ui:field="addToRoster"><ui:msg key="addToRosterLabelText">Add to roster</ui:msg></g:CheckBox></p>
+			<div class="actions hablar-topDefaultBordered">
+				<g:Button ui:field="accept"><ui:msg key="openChatAction">Open Chat</ui:msg></g:Button>
+				<g:Button ui:field="cancel"><ui:msg key="cancelAction">Cancel</ui:msg></g:Button>
+			</div>
+		</div>
+	</g:HTMLPanel>
+</ui:UiBinder>

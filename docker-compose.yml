@@ -1,0 +1,58 @@
+version: '2'
+
+networks:
+  dev-network:
+    driver: bridge
+services:
+  php:
+    build: './php/'
+    networks:
+      - dev-network
+    volumes:
+      - ./public_html/:/var/www/html/
+  apache:
+    build: './apache/'
+    depends_on:
+      - php
+      - mysql
+    networks:
+      - dev-network
+    ports:
+      - "9225:9225"
+    volumes:
+      - ./public_html/:/var/www/html/
+  build:
+      build: './build'
+      volumes:
+        - ./WebApp-Ant:/opt/HierarchyCMS
+        - ./gwt-2.5.1:/opt/gwt-2.5.1
+
+  mysql: 
+    image: mysql
+    command: --default-authentication-plugin=mysql_native_password
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: fun7imes
+    ports:
+      - '3307:3306'
+    networks:
+      - dev-network
+    volumes:
+      #- leistritz-mysql:/var/lib/mysql
+      - ./mysql:/var/lib/mysql
+  ejabberd:
+    image: ejabberd/ecs
+    depends_on:
+      - mysql
+    volumes:
+      #- leistritz-mysql:/var/lib/mysql
+      - ./ejabberd/etc:/home/ejabberd/conf
+      #- ./ejabberd/lib:/home/ejabberd/lib1
+  tomcat:
+    build: ./tomcat
+    ports:
+      - '8888:8080'
+    volumes:
+      - ./WebAppDeployed:/usr/local/tomcat/webapps/ROOT
+      - ./tomcat/tomcat-users.xml:/usr/local/tomcat/conf/tomcat-users.xml
+      - ./tomcat/manager-context.xml:/usr/local/tomcat/webapps.dist/manager/META-INF/context.xml

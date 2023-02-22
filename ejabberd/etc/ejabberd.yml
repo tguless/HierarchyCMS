@@ -1,0 +1,123 @@
+acme:
+  auto: false
+access: 
+  announce: 
+    admin: allow
+  c2s: 
+    blocked: deny
+    all: allow
+  c2s_shaper: 
+    admin: none
+    all: normal
+  configure: 
+    admin: allow
+  local: 
+    local: allow
+  max_user_offline_messages: 
+    admin: 5000
+    all: 100
+  max_user_sessions: 
+    all: 10
+  muc: 
+    all: allow
+  muc_admin: 
+    admin: allow
+  pubsub_createnode: 
+    all: allow
+  register: 
+    admin: allow
+    all: deny
+  registrant: 
+    admin: allow
+    all: deny
+  s2s_shaper: 
+    all: fast
+acl: 
+  admin: 
+    user: 
+      - 
+        "tguless": "shareshowandtell.com"
+  local: 
+    user_regexp: 
+      - ""
+auth_method: odbc
+hosts: 
+  - "localhost"
+  - "shareshowandtell.com"
+language: "en"
+listen: 
+  - 
+    port: 5222
+    module: ejabberd_c2s
+    starttls: true
+    max_stanza_size: 65536
+    shaper: c2s_shaper
+    access: c2s
+  - 
+    port: 5269
+    module: ejabberd_s2s_in
+    max_stanza_size: 131072
+    shaper: s2s_shaper
+  - 
+    request_handlers: 
+      "/bosh": mod_bosh
+      "/admin": ejabberd_web_admin
+    port: 5280
+    module: ejabberd_http
+loglevel: 4
+modules: 
+  mod_adhoc: []
+  mod_announce: 
+    access: announce
+  mod_caps: []
+  mod_configure: []
+  mod_disco: []
+  #mod_irc: []
+  mod_last: []
+  mod_muc: 
+    access: muc
+    access_create: muc
+    access_persistent: muc
+    access_admin: muc_admin
+    max_users: 500
+  mod_offline: 
+    access_max_user_messages: max_user_offline_messages
+  mod_privacy: 
+    db_type: sql
+  mod_private: []
+  mod_proxy65: 
+    access: local
+    shaper: c2s_shaper
+  mod_pubsub: 
+    access_createnode: pubsub_createnode
+    #pep_sendlast_offline: false
+    last_item_cache: false
+    plugins: 
+      - "flat"
+      - "pep"
+  mod_register: 
+    welcome_message: 
+      subject: "Welcome!"
+      body: "Welcome to a Jabber service powered by Debian. For information about Jabber visit http://www.jabber.org"
+    access_from: registrant
+  mod_roster: 
+    db_type: sql
+  mod_stats: []
+  mod_time: []
+  mod_vcard: 
+    db_type: sql
+  mod_version: []
+  mod_bosh: []
+registration_timeout: infinity
+certfiles: 
+  - "/home/ejabberd/conf/ejabberd.pem"
+s2s_use_starttls: true
+shaper: 
+  normal: 1000
+  fast: 50000
+sql_database: "ejabberd"
+sql_password: "mysqlpass"
+sql_port: 3306
+sql_server: "mysql"
+sql_type: mysql
+sql_username: "root"

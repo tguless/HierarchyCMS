@@ -1,0 +1,96 @@
+sudo add-apt-repository ppa:lucid-bleed/ppa 
+sudo apt-get update
+sudo apt-get install ffmpeg
+
+sudo add-apt-repository "deb http://archive.canonical.com/ lucid partner"
+sudo apt-get update
+apt-get install sun-java6-jdk
+
+php5-cgi - server-side, HTML-embedded scripting language (CGI binary)
+ffmpeg - Multimedia player, server, encoder and transcoder
+libavfilter-extra-1 - Libav video postprocessing library
+php5-ffmpeg - audio and video support via ffmpeg for php5
+libjmagick6-jni - A java interface to ImageMagick - native library
+tomcat6 - Servlet and JSP engine
+mysql-server - MySQL database server (metapackage depending on the latest version)
+
+http://php-java-bridge.sourceforge.net/pjb/FAQ.html
+What do I need to communicate with PHP?
+
+Only the PHP code from JavaProxy.php within your PHP web application, the Java libraries JavaBridge.jar, 
+php-script.jar and php-servlet.jar, and a ContextLoaderListener declaration in your WEB-INF/web.xml
+
+When you deploy you have to make sure war/WEB-INF/cgi is write enabled for the jar file to create the 
+files scripts that it needs. 
+
+Test code:
+
+    <%
+    javax.script.CompiledScript script =((javax.script.Compilable)(new javax.script.ScriptEngineManager().getEngineByName("php"))).compile("<?php echo 'Hello '.java_context()->get('hello').'!'; ?>");
+    javax.script.CompiledScript instance = (javax.script.CompiledScript)((java.security.cert.CertStoreParameters)script).clone();
+    instance.getEngine().setContext(new php.java.script.servlet.PhpHttpScriptContext(instance.getEngine().getContext(),this,application,request,response));
+
+    instance.getEngine().put("hello", "java");
+    instance.eval();
+    instance.getEngine().put("hello", "world");
+    instance.eval();
+    %> 
+
+To kick off the encoder   
+cd /var/lib/tomcat6/webapps/ROOT
+java -classpath ./WEB-INF/lib/*.jar:./WEB-INF/classes/:./WEB-INF/lib/mysql-connector-java-5.1.12-bin.jar com/hirerarchycm/transcoder/QueueProcessor
+
+This didn't work for webm but is a good way to get ungimped ffmpeg on ubuntu:
+aptitude install libavcodec-unstripped-52 libavdevice-unstripped-52 libavformat-unstripped-52 libavutil-unstripped-49 libpostproc-unstripped-51 libswscale-unstripped-0 libavfilter-unstripped-0 ffmpeg
+
+From:
+http://www.techno-blog.net/blog/2011/compiler-la-derniere-version-de-ffmpeg.html
+
+mkdir ~/temp
+cd ~/temp
+wget http://www.techno-blog.net/script/ffmpeg_git.sh
+sudo sh ffmpeg_git.sh
+
+2013-11-14 Update 
+Found this additional flag to x264 installation:
+ -–disable-opencl
+http://forum.serviio.org/viewtopic.php?f=5&t=10808
+wrap "retrieving libvpx from git sources" git clone http://git.chromium.org/webm/libvpx.git
+
+checking in ffmpeg_git.sh
+New location for libvpx:
+
+end 2013-11-14 Update
+
+sudo mv /usr/share/ffmpeg/* /usr/local/share/ffmpeg/
+
+ ffmpeg -y -i ~/IeAndSafari.mp4 -b 500k -vcodec libx264 -vpre slow -vpre baseline -g 30 ~/test.mp4
+ 
+ 
+ The followinf failed:
+ aptitude install erlang build-essential
+wget http://www.process-one.net/downloads/ejabberd/2.1.4/ejabberd-2.1.4.tar.gz
+tar -xvzf ejabberd-2.1.4.tar.gz
+cd ejabberd-2.1.4/src
+./configure --enable-odbc
+make
+make install
+ 
+ 
+ Instead grab the repository package and compile these mysql files:
+ https://support.process-one.net/doc/display/CONTRIBS/Yxa
+ 
+svn checkout http://svn.process-one.net/ejabberd-modules/mysql/trunk/ mysql
+cd mysql
+make 
+cp ./ebin/* /usr/lib/ejabberd/ebin/
+
+Also follow this:
+https://support.process-one.net/doc/display/MESSENGER/Using+ejabberd+with+MySQL+native+driver
+
+For gwt-voices, this is the codec that is needed: http://code.google.com/p/gwt-voices/
+C:\Users\ted>ffmpeg   -i C:\Users\ted\Desktop\clickOrig.wav -ac 1 -acodec pcm_s16le  C:\Users\ted\Desktop\click.wav
+
+com.calclab.hablar.signals.sound.client.SoundManager.play is a good place to put a breakpoint to get the messagebus stack of hablar. 
+ 
+

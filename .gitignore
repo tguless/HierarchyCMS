@@ -1,0 +1,5 @@
+build/
+mysql/
+WebAppDeployed/
+WebApp-Maven/local-maven-repo/
+ejabberd/lib/

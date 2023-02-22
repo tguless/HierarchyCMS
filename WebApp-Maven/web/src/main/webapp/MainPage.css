@@ -1,0 +1,70 @@
+/** Add css rules here for your application. */
+
+
+/** Example rules used by the template application (remove for your app) */
+h1 {
+  font-size: 2em;
+  font-weight: bold;
+  color: #777777;
+  margin: 40px 0px 70px;
+  text-align: center;
+}
+
+.sendButton {
+  display: block;
+  font-size: 16pt;
+}
+
+/** Most GWT widgets already have a style name defined */
+.gwt-DialogBox {
+  width: 400px;
+}
+
+.dialogVPanel {
+  margin: 5px;
+}
+
+.serverResponseLabelError {
+  color: red;
+}
+
+/** Set ids using widget.getElement().setId("idOfElement") */
+#closeButton {
+  margin: 15px 6px 6px;
+}
+
+.icon-zoom-in {
+background-image: url('images/imageViewer/ZoomIn.jpg') !important;
+}
+
+.icon-zoom-out {
+background-image: url('images/imageViewer/ZoomOut.jpg') !important;
+}
+
+.icon-actual-size {
+background-image: url('images/imageViewer/ActualSize.jpg') !important;
+}
+
+.icon-fit-to-panel {
+background-image: url('images/imageViewer/Fit.jpg') !important;
+}
+
+.icon-rotate-left {
+background-image: url('images/imageViewer/RotateLeft.jpg') !important;
+}
+
+.icon-rotate-right {
+background-image: url('images/imageViewer/RotateRight.jpg') !important;
+}
+
+.icon-forward {
+background-image: url('images/imageViewer/GoForward.jpg') !important;
+}
+
+.icon-backward {
+background-image: url('images/imageViewer/GoBackward.jpg') !important;
+}
+
+.icon-refresh {
+background-image: url('images/refreshButton.png') !important;
+}

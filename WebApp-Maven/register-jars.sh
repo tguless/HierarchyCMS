@@ -1,0 +1,1 @@
+mvn deploy:deploy-file -DgroupId=com.extjs -DartifactId=gxt -Dversion=2.2.4-gwt22 -Durl=file:./local-maven-repo/ -DrepositoryId=local-maven-repo -DupdateReleaseInfo=true -Dfile=./jars/gxt-2.2.4-gwt22.jar

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module rename-to='mainmodule'>
+	<!-- Inherit the core Web Toolkit stuff. -->
+	<inherits name='com.google.gwt.user.User'/>
+	
+	<!-- Inherit the default GWT style sheet. You can change -->
+	<!-- the theme of your GWT application by uncommenting -->
+	<!-- any one of the following lines. -->
+	<inherits name='com.google.gwt.user.theme.standard.Standard'/>
+	<inherits name='com.extjs.gxt.ui.GXT'/>
+	
+	<inherits name="org.swfupload.SWFUpload"/>
+	<!--<inherits name="pl.rmalinowski.gwt2swf.GWT2SWF"/>-->
+	<inherits name='fr.hd3d.html5.video.HTML5Video'/>
+	<!--<inherits name="com.gc.gwt.wysiwyg.Editor"/>-->
+	<inherits name="com.gwtpro.html5.fileapi.Html5FileApi"/>
+	
+	<!-- 
+	<inherits name="com.calclab.emite.browser.EmiteBrowser" />
+	<inherits name="com.calclab.emite.core.EmiteCore" />  	
+	<inherits name="com.calclab.emite.im.EmiteIM" />
+	<inherits name='com.calclab.emite.xep.privacylists.PrivacyLists' />
+	<inherits name='com.calclab.emite.xep.avatar.EmiteAvatar' />
+	<inherits name='com.calclab.emite.reconnect.EmiteReconnect' />
+	<inherits name="com.calclab.hablar.html.HablarHtml" />
+	<inherits name='com.calclab.hablar.console.HablarConsole' />
+	<inherits name='com.calclab.hablar.login.HablarLogin' />
+	<inherits name="com.calclab.hablar.Hablar" />
+	-->
+	<inherits name="com.calclab.hablar.html.HablarHtml" />
+
+	
+	<inherits name='org.appfuse.Autocomplete' />
+	
+    <servlet path="/proxy" class="de.spieleck.servlets.ProxyServlet"/>
+	
+	<!-- <inherits name='com.extjs.gxt.samples.client.Examples'/> --> 	
+	<inherits name='com.hierarchycm.shared.CommonUtil'/>
+
+	<!-- <inherits name='com.google.gwt.user.theme.chrome.Chrome'/> -->
+	<!-- <inherits name='com.google.gwt.user.theme.dark.Dark'/> -->
+	<!-- Other module inherits -->
+	<!-- Specify the app entry point class. -->
+	
+	<entry-point class='com.hierarchycm.gxt.client.MainCmEntryPoint'/>
+	<generate-with class="com.hierarchycm.gxt.server.CustomRpcRemoteProxyGenerator">
+		<when-type-assignable class="com.google.gwt.user.client.rpc.RemoteService" />
+	</generate-with>
+	
+	<!-- Specify the paths for translatable code -->
+	<source path='client'/>
+	<source path='shared'/>
+</module>
