@@ -30,7 +30,9 @@ At launch it came with the following features
 
 While the back-end was developed using a MySQL database, I soon came to the realization that not only was MySQL not a fit to build what is essentially a graph database, but also that graph database platforms like [Neo4j](https://neo4j.com/) would be able to serve the need  much more efficiently. 
 
-Using MySQL to store and retrieve graphs also made it difficult to use an ORM for the purpose, which forced the creation of a non-standard/framework conformant data access layer. 
+Using MySQL to store and retrieve graphs also made it difficult to use an ORM framework like Hibernate for the purpose, which forced the creation of an ugly non-standard/framework conformant data access layer. 
+
+Furthermore, without the use of a UI framework like Model View Presenter, the client side code quickly became unmanageable cluttered and difficult to maintain.  
 
 ## Why Was it Mothballed for So Long?
 
@@ -40,9 +42,17 @@ The project was mothballed because without Docker at the time, it was difficult 
 
 ### GWT Dependencies not in Maven Repositories
 
-Also, since the application was developed using GWT and as most GWT libraries had not at the time been leveraging centralized repositories like Maven for software distribution, pulling in 3rd party dependencies required a complex set of instructions / scripts to package the right versions of dependencies together.
+Also, since the application was developed using GWT and as most GWT libraries at the time had not been leveraging centralized repositories like Maven for software distribution, pulling in 3rd party dependencies required a complex set of instructions / scripts to package the right versions of dependencies together.
 
 Even today, I had to mavenize some legacy dependencies and include them with my project to make the packaging of the application as clean as possible. 
+
+## Where Can this Idea Go?
+
+While this code with all its legacy gunk really cannot go very far, the idea behind this project still has potential. 
+
+A community built database schema for various profile associated content types has potential as long as strong moderation workflows a-la-wikipedia can be built-in. 
+
+Using a graph database engine can ensure that the back-end is capable of handling any numbers of entity types and relationships.
 
 ## Honorable Mentions 
 
