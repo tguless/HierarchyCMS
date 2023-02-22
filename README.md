@@ -6,21 +6,23 @@ Overview
 
 HierarchyCMS was developed in the 2010-2011 timeframe to experiment with building a social network platform that relies on its community to contribute to its database schema. 
 
-The idea was to give the community the ability to build a new database structure for content that can ultimately be tied to a social network profile and be presented in a social media feed. 
+The idea was to give the community the ability to add new content types to add to social network profiles which can then be presented in social media feeds. 
 
 For example, the community could submit a request to create a new data-type called "car" with attributes like "Make", "Model" and "Year" which could then be tied to a user profile via a relationship record ("User Profile"--"has"--->"Car"). 
 
-A further distinguishing feature of this social media platform was the introduction of multiple personalities while at the time none of the social media platforms allowed this.  
+A further distinguishing feature of this social media platform was the introduction of multiple personalities. 
 
-Facebook has since introduced the idea of "profiles". 
+At the time none of the social media platforms allowed the creation of multiple personalities under the same account.  
+
+Facebook has since introduced the idea of "profiles" to achieve the same. 
 
 ## What Features did it Come With?
 
 At launch it came with the following features
 
 1. Real-Time messaging.
-2. The ability to create multiple personalities. 
-3. Rudimentary content type creator. 
+2. The ability to create multiple personalities under a parent account. 
+3. A rudimentary content type creator. 
 4. Example Album content type for housing videos and photos (with content entry and display screens). 
 5. Example Video content type (with content entry and display screens). 
 6. Example Photo content type (with content entry and display screens). 
