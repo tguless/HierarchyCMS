@@ -26,7 +26,6 @@ services:
       volumes:
         - ./WebApp-Ant:/opt/HierarchyCMS
         - ./gwt-2.5.1:/opt/gwt-2.5.1
-
   mysql: 
     image: mysql
     command: --default-authentication-plugin=mysql_native_password
@@ -40,6 +39,7 @@ services:
     volumes:
       #- leistritz-mysql:/var/lib/mysql
       - ./mysql:/var/lib/mysql
+      - ./mysql-init:/docker-entrypoint-initdb.d/:ro
   ejabberd:
     image: ejabberd/ecs
     depends_on:

@@ -86,7 +86,6 @@ public class ProxyServlet extends HttpServlet {
 		if (remotePath == null || remoteServer == null)
 			throw new ServletException("Servlet needs remotePath & remoteServer.");
 		
-		
 		if (remotePortStr != null) {
 			try {
 				remotePort = Integer.parseInt(remotePortStr);

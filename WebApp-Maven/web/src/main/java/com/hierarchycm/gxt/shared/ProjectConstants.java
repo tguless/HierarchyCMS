@@ -7,7 +7,7 @@ public class ProjectConstants {
 	public static final String currentSchema = "hierarchy_cm";
 	public static final String dbUser = "root";
 	public static final String dbPassword = "mysqlpass";
-	public static final String dbConnectionUrl = "jdbc:mysql://localhost:3306/";
+	public static final String dbConnectionUrl = "jdbc:mysql://localhost:3307/";
 	public static final String connectionParams = "?zeroDateTimeBehavior=convertToNull&useUnicode=true&characterEncoding=UTF-8&characterSetResults=UTF-8";
 	
 	public static final String imageCategory = "1";
