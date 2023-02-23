@@ -16,6 +16,20 @@ At the time none of the social media platforms allowed the creation of multiple 
 
 Facebook has since introduced the idea of "profiles" to achieve the same. 
 
+## What is with the Name?
+
+CMS short for Content Management System is an ever common term used for projects like WordPress and Drupal. 
+
+Content Management Systems all have an extensible system for creating new content types, and that's where this project best fit the concept of a CMS. 
+
+The "Hierarchy" portion of the name was to reflect the data structure that most typically represents user profiles and the data that is related to them. 
+
+At the top of the hierarchy is the user's login, and below that top level would be the personas that belong to the login, and each persona might have a friend list, posts etc. 
+
+The data ultimately ends up having a hierarchical organization with the user's login being the top node, and the rest of the user's content being descendants that branch off the top node. 
+
+The more common term used to describe this type of data representation / organization is the term "Graph", so the project could have also been called GraphCMS. 
+
 ## What Features did it Come With?
 
 At launch it came with the following features
@@ -30,17 +44,25 @@ At launch it came with the following features
 
 ## Technology Misfit
 
-While the back-end was developed using a MySQL database, I soon came to the realization that not only was MySQL not a fit to build what is essentially a graph database, but also that graph database platforms like [Neo4j](https://neo4j.com/) would be able to serve the need  much more efficiently. 
+While the back-end was developed using a MySQL database, I soon came to the realization that not only was MySQL not a fit to build what is essentially a [graph database](https://en.wikipedia.org/wiki/Graph_database), but also that graph database platforms like [Neo4j](https://neo4j.com/) would be able to serve the need  much more efficiently. 
 
 Using MySQL to store and retrieve graphs also made it difficult to use an ORM framework like Hibernate for the purpose, which forced the creation of an ugly non-standard/framework conformant data access layer. 
 
-Furthermore, without the use of a UI framework like Model View Presenter, the client side code quickly became unmanageable cluttered and difficult to maintain.  
+Since you are already here, also check out my other project [tguless/neo4j-gtfs](https://github.com/tguless/neo4j-gtfs) for an example application using the [Neo4j](https://neo4j.com/)  graph database. 
+
+Furthermore, without the use of a UI framework like [Model View Presenter](https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93presenter), the client side code quickly became unmanageable cluttered and difficult to maintain.  
+
+## Why Did You Stop?
+
+I came to the realization that I would never be able to catch up with social media behemoths with their massive and quickly grown valuations on my own, and I was not ready to quit my day-job and try to build a company with a bunch of investor cash. 
+
+We also had a baby girl coming our way, and my time was better spent building applications for paying customers. 
 
 ## Why Was it Mothballed for So Long?
 
-### No Docker to Create Repeatable Environments
+### Docker Not Available Yet To Create Repeatable Environments
 
-The project was mothballed because without Docker at the time, it was difficult to create simplified installation and deployment instructions of all the service dependencies to distribute among peers for review and co-development. 
+The project was mothballed in an unreleased state because without Docker at the time, it was difficult to create simplified installation and deployment instructions of all the service dependencies to distribute among peers for review and co-development. 
 
 ### GWT Dependencies not in Maven Repositories
 
@@ -54,47 +76,45 @@ While this code with all its legacy gunk really cannot go very far, the idea beh
 
 A community built database schema for various profile associated content types has potential as long as strong moderation workflows a-la-wikipedia can be built-in. 
 
-Using a graph database engine can ensure that the back-end is capable of handling any numbers of entity types and relationships.
+Using a graph database engine like [Neo4j](https://neo4j.com/) can ensure that the back-end is capable of handling any numbers of entity types and relationships.
 
-## Honorable Mentions 
+## Key Dependencies
 
 ### Packaging Help
 
-https://github.com/steinsag/gwt-maven-example (great example of how to mavenize GWT projects)
+[steinsag/gwt-maven-example](https://github.com/steinsag/gwt-maven-example) : Great example of how to mavenize GWT projects
 
-### Real Time Messaging
+### Real Time Messaging (Live Chat)
 
-https://github.com/igniterealtime/Smack (talk to ejabberd XMPP server for profile creation)
+[EjabberD](https://www.ejabberd.im/) : Server platform to enable real time messaging using XMPP)
 
-https://www.ejabberd.im/ (real time messaging using XMPP)
+[Smack](https://github.com/igniterealtime/Smack) : Talk to EjabberD XMPP server for profile creation)
 
-https://github.com/EmiteGWT/hablar (front end for Emite)
+[EmiteGWT/emite](https://github.com/EmiteGWT/emite) : An XMPP Library for GWT environment to allow real-time messaging among users
 
-https://github.com/EmiteGWT/emite (A XMPP Library for GWT environment)
+[EmiteGWT/hablar](https://github.com/EmiteGWT/hablar) : A GUI front end for Emite
 
 ### Security
 
-https://simplecaptcha.sourceforge.net/ (captcha)
+[SimpleCaptcha Java Library](https://simplecaptcha.sourceforge.net/) (captcha)
 
 ### Video
 
-https://github.com/PHP-FFMpeg/PHP-FFMpeg (For introspecting video files)
+[PHP-FFMpeg](https://github.com/PHP-FFMpeg/PHP-FFMpeg) : API used for getting metadata of video files
 
-https://sourceforge.net/projects/php-java-bridge/ (Java bridge to php-ffmpeg to help with video metadata extraction)
+[php-java-bridge](https://sourceforge.net/projects/php-java-bridge/) : Java bridge to invoke the php-ffmpeg API
 
-https://github.com/Letractively/gwt-html5-video (a browser agnostic video playback widget for GWT)
+[Letractively/gwt-html5-video](https://github.com/Letractively/gwt-html5-video) : A browser agnostic video playback widget for GWT
 
 ### Multi File Uploads
 
-https://code.google.com/archive/p/gwt-fileapi/ (file upload GWT component)
+[gwt-fileapi](https://code.google.com/archive/p/gwt-fileapi/) : File upload GWT widget which supports multi-file uploads
 
-https://code.google.com/archive/p/swfupload-gwt/ (fallback for non HTML 5 browsers - legacy junk now)
+[swfupload-gwt](https://code.google.com/archive/p/swfupload-gwt/) : Fallback for non HTML 5 browsers - this is legacy junk that can be removed since legacy browsers lost users / reached EOL and since Adobe Flash reached End Of Life. 
 
 ### GUI
 
-https://www.sencha.com/products/gxt/ (used a legacy gxt-2.2.4-gwt22 library for visual elements)
-
-
+[Sencha GXT](https://www.sencha.com/products/gxt/) : Enabled a rich GUI experience similar to full desktop apps of the time using the legacy gxt-2.2.4-gwt22 library. 
 
 Running via Maven in GWT Dev Mode
 ---------------------------------
