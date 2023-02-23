@@ -5349,3 +5349,10 @@ DELIMITER ;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
 -- Dump completed on 2023-02-22 23:13:01
+
+
+LOCK TABLES `app_config` WRITE;
+/*!40000 ALTER TABLE `app_config` DISABLE KEYS */;
+INSERT INTO `app_config` VALUES ('currentEjabberSchema','ejabberd'),('DEFAULT_IMAGE','/var/lib/tomcat6/webapps/ROOT/images/defaultFolder.png'),('DEFAULT_PERSONALITY_TYPE','1'),('DEFAULT_POPUP_HEIGHT','600'),('DEFAULT_POPUP_WIDTH','600'),('ejabberConnectionParams','?zeroDateTimeBehavior=convertToNull'),('ejabberDbConnectionUrl','jdbc:mysql://localhost:3306/'),('ejabberDbPassword','mysqlpass'),('ejabberDbUser','root'),('IDENTITY_ROOT','3'),('OBJ_INSTANCE_FETCH_DEPTH','5'),('xmppServer','ejabberd');
+/*!40000 ALTER TABLE `app_config` ENABLE KEYS */;
+UNLOCK TABLES;
