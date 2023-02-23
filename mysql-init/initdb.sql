@@ -1,3 +1,5 @@
+SET GLOBAL log_bin_trust_function_creators = 1;
+
 CREATE DATABASE  IF NOT EXISTS `hierarchy_cm` /*!40100 DEFAULT CHARACTER SET utf8mb3 */ /*!80016 DEFAULT ENCRYPTION='N' */;
 USE `hierarchy_cm`;
 -- MySQL dump 10.13  Distrib 8.0.32, for Win64 (x86_64)
