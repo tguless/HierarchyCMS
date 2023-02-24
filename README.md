@@ -176,7 +176,7 @@ mvn clean install
 mvn tomcat7:run-war-only
 ```
 
-Your application is now deployed at http://127.0.0.1:8082/parent/
+Your application is now deployed at [http://127.0.0.1:8082/](http://127.0.0.1:8082/)
 
 Start GWT Dev Mode via Maven
 
