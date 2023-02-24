@@ -42,6 +42,8 @@ services:
       - ./mysql-init:/docker-entrypoint-initdb.d/:ro
   ejabberd:
     image: ejabberd/ecs
+    ports:
+      - '5222:5222'
     depends_on:
       - mysql
     volumes:

@@ -534,7 +534,7 @@ CREATE TABLE `object_instance` (
   `name_nm` varchar(255) NOT NULL,
   `owner_ky` int unsigned DEFAULT NULL,
   `when_updated` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `when_created` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `when_created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ,
   PRIMARY KEY (`object_ky`),
   KEY `FK_object_type_ky` (`object_type_ky`),
   CONSTRAINT `FK_object_type_ky` FOREIGN KEY (`object_type_ky`) REFERENCES `object_type` (`object_type_ky`) ON DELETE RESTRICT ON UPDATE RESTRICT
@@ -557,7 +557,7 @@ CREATE TABLE `object_instance_link` (
   `srcApproved` tinyint(1) DEFAULT NULL,
   `destApproved` tinyint(1) DEFAULT NULL,
   `when_updated` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `when_created` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `when_created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ,
   `isDeleted` tinyint(1) DEFAULT '0',
   PRIMARY KEY (`object_inst_link_ky`) USING BTREE,
   UNIQUE KEY `unique_ix` (`src_object_ky`,`dest_object_ky`,`object_link_type_ky`) USING BTREE,
@@ -2177,7 +2177,7 @@ BEGIN
 
   select getObjTypeTbl(ip_object_type_ky) into tableNm;
 
-  insert into object_instance (object_type_ky, name_nm, owner_ky, when_created) values (ip_object_type_ky, ip_object_instance_nm, ip_owner_ky, null);
+  insert into object_instance (object_type_ky, name_nm, owner_ky) values (ip_object_type_ky, ip_object_instance_nm, ip_owner_ky);
 
   set newInstanceId =  LAST_INSERT_ID();
 
@@ -2313,8 +2313,8 @@ declare lvChildOwnerKy int(11);
                     
                     select getObjInstLinkTable(ipSrcObjectKy, ipDestObjectKy)  into lvLinkTable;
 
-                    insert into  object_instance_link (src_object_ky, dest_object_ky, object_link_type_ky, owner_ky, srcApproved, destApproved, when_created)
-                    values (ipSrcObjectKy, ipDestObjectKy, lvObjLinkTypeKy, ip_owner_ky, lvParentApproved, lvChildApproved, null);
+                    insert into  object_instance_link (src_object_ky, dest_object_ky, object_link_type_ky, owner_ky, srcApproved, destApproved)
+                    values (ipSrcObjectKy, ipDestObjectKy, lvObjLinkTypeKy, ip_owner_ky, lvParentApproved, lvChildApproved);
 
                       set lvObectInstLinkKy = LAST_INSERT_ID();
                       set lvResult = lvObectInstLinkKy;
@@ -5355,9 +5355,10 @@ DELIMITER ;
 
 LOCK TABLES `app_config` WRITE;
 /*!40000 ALTER TABLE `app_config` DISABLE KEYS */;
-INSERT INTO `app_config` VALUES ('currentEjabberSchema','ejabberd'),('DEFAULT_IMAGE','/var/lib/tomcat6/webapps/ROOT/images/defaultFolder.png'),('DEFAULT_PERSONALITY_TYPE','1'),('DEFAULT_POPUP_HEIGHT','600'),('DEFAULT_POPUP_WIDTH','600'),('ejabberConnectionParams','?zeroDateTimeBehavior=convertToNull'),('ejabberDbConnectionUrl','jdbc:mysql://localhost:3306/'),('ejabberDbPassword','mysqlpass'),('ejabberDbUser','root'),('IDENTITY_ROOT','3'),('OBJ_INSTANCE_FETCH_DEPTH','5'),('xmppServer','ejabberd');
+INSERT INTO `app_config` VALUES ('currentEjabberSchema','ejabberd'),('DEFAULT_IMAGE','/var/lib/tomcat6/webapps/ROOT/images/defaultFolder.png'),('DEFAULT_PERSONALITY_LINK_TYPE_ID','9'),('DEFAULT_PERSONALITY_TYPE','1'),('DEFAULT_POPUP_HEIGHT','600'),('DEFAULT_POPUP_WIDTH','600'),('ejabberConnectionParams','?zeroDateTimeBehavior=convertToNull'),('ejabberDbConnectionUrl','jdbc:mysql://localhost:3306/'),('ejabberDbPassword','mysqlpass'),('ejabberDbUser','root'),('IDENTITY_ROOT','3'),('OBJ_INSTANCE_FETCH_DEPTH','5'),('xmppServer','127.0.0.1');
 /*!40000 ALTER TABLE `app_config` ENABLE KEYS */;
 UNLOCK TABLES;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 LOCK TABLES `object_type_category` WRITE;
 /*!40000 ALTER TABLE `object_type_category` DISABLE KEYS */;
