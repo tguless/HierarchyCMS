@@ -1,6 +1,5 @@
 package com.hierarchycm.gxt.server;
 
-
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -34,7 +33,6 @@ import com.hierarchycm.mysql.Dao.UserProfile;
 import com.hierarchycm.shared.client.GxtException;
 import com.hierarchycm.shared.server.Util;
 
-
 @SuppressWarnings("serial")
 public class DatabaseServiceImpl extends RemoteServiceServlet implements DatabaseService {
 	
@@ -65,10 +63,7 @@ public class DatabaseServiceImpl extends RemoteServiceServlet implements Databas
 			throw le;   
 		}		
 	}
-	
 
-	
-	
 	public void deleteChild (String parentId, CommandWithCallback command)   throws GxtException, SessionTimeoutException{ 
 		System.out.println("The command came in to delete:" + parentId);
 		
@@ -81,8 +76,7 @@ public class DatabaseServiceImpl extends RemoteServiceServlet implements Databas
 			throw le;   
 		}				
 	}
-	
-	 
+
 	public void deleteObjectInstance (String parentId, String typeId, CommandWithCallback command)   throws GxtException, SessionTimeoutException{ 
 		checkSession(command);
 		try {
@@ -159,10 +153,7 @@ public class DatabaseServiceImpl extends RemoteServiceServlet implements Databas
 			throw le;   
 		}		
 	}
-	
-	
 
-	
 	public   HashMap<String,ObjectTypeTree> getAllObjectTypes () throws GxtException {
 		try {
 			return ObjectModelDAO.getAllObjectTypes();
@@ -290,8 +281,7 @@ public class DatabaseServiceImpl extends RemoteServiceServlet implements Databas
 		        	String userId = UserProfile.addUser(username, password, email);
 		        	String personalityId = UserProfile.addPersonality(userId, firstName,  lastName);
 		        	XmppUtil xmpp = new XmppUtil();
-					xmpp.registerUserXmpp(personalityId, password, firstName+" "+lastName);		   
-					
+					xmpp.registerUserXmpp(personalityId, password, firstName+" "+lastName);
 					
 		       		return "CREATE_SUCCESS";        		 	
 		        } else {
@@ -426,8 +416,6 @@ public class DatabaseServiceImpl extends RemoteServiceServlet implements Databas
 			throw le;   
 		}					
 	}
-	
-
 
 	@Override
 	public void testJpa() throws GxtException {
@@ -503,7 +491,6 @@ public class DatabaseServiceImpl extends RemoteServiceServlet implements Databas
 		return si;
 	}
 	
-	
 	public HashMap<String, HashMap<String, ObjectLinkType>> getAllTypeSubtypes() throws GxtException {
 		try {
 			return ObjectModelDAO.getAllTypeSubtypes();
@@ -532,6 +519,5 @@ public class DatabaseServiceImpl extends RemoteServiceServlet implements Databas
 		logOff();
 		return true;
 	}
-		
 	
 }

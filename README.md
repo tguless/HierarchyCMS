@@ -131,44 +131,10 @@ Download and install maven
 
 Only tested with Oracle JDK 8 to date
 
-#### GWT 2.5.1
-
-I have not had a chance to port this beyond GWT 2.5.1
-
-#### gxt-2.2.4-gwt22 Downloaded
-
-You need to download and install gxt-2.2.4-gwt22.jar into a local maven repo.  
-
-This is the cleanest way to handle jar dependencies that cannot be found on any maven code repository. 
-
-Note: On windows, below commands are best run in Cygwin with wget and unzip packages installed. 
+#### Required Folders Set Up
 
 ```
-cd WebApp-Maven
-mkdir jars
-cd jars
-wget http://www.java2s.com/Code/JarDownload/gxt/gxt-2.2.4-gwt22.jar.zip
-unzip gxt-2.2.4-gwt22.jar.zip
-rm gxt-2.2.4-gwt22.jar.zip
-cd ..
-mkdir local-maven-repo
-sh ./regiser-jars.sh
-```
-
-#### Image Cache Location
-
-##### Windows
-
-```
-mkdir /cygdrive/c/wscache
-mkdir /cygdrive/c/wscache/smallpic
-```
-
-##### Unix
-
-```
-mkdir /var/lib/hierarchycms/
-mkdir /var/lib/hierarchycms/smallpic
+sh setup.sh
 ```
 
 ### Start Dependencies

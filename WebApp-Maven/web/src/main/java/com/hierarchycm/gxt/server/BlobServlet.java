@@ -200,9 +200,7 @@ public class BlobServlet extends HttpServlet {
 			} catch ( IOException e) {
 				System.out.println("Trouble getting file length!");
 			}
-             
-             
-			
+
 			try {
 			in.skip(skip);
 			} catch ( IOException e) {

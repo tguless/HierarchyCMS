@@ -26,9 +26,7 @@ public interface DatabaseService extends RemoteService   {
 	//public HashMap <String, String> getAppConfig() throws  GxtException;
 	
 //	public ObjectTypeTree upSertChild (ObjectLinkType oma) throws GxtException;
-	 
-	
-	
+
 	public void deleteChild (String parentId, CommandWithCallback command)  throws  GxtException, SessionTimeoutException;
 	
 	public void delObjLinkType (String linkTypeKy) throws GxtException;
