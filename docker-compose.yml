@@ -44,6 +44,7 @@ services:
     image: ejabberd/ecs
     ports:
       - '5222:5222'
+      - '5280:5280'
     depends_on:
       - mysql
     volumes:

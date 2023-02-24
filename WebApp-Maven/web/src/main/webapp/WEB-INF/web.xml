@@ -112,6 +112,10 @@
             <param-name>remotePort</param-name>
             <param-value>5280</param-value>
         </init-param>
+		<init-param>
+			<param-name>remoteServer</param-name>
+			<param-value>localhost</param-value>
+		</init-param>
 	</servlet>
 	<servlet-mapping>
   		<servlet-name>proxyServlet</servlet-name>

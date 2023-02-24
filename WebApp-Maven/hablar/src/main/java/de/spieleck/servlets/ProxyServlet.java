@@ -71,7 +71,7 @@ public class ProxyServlet extends HttpServlet {
 	 */
 	protected boolean debugFlag;
 
-	  private final Logger logger = Logger.getLogger("UploadServlet");
+    private final Logger logger = Logger.getLogger("UploadServlet");
 	
 	/**
 	 * Init

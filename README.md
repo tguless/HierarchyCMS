@@ -116,6 +116,8 @@ Using a graph database engine like [Neo4j](https://neo4j.com/) can ensure that t
 
 [Sencha GXT](https://www.sencha.com/products/gxt/) : Enabled a rich GUI experience similar to full desktop apps of the time using the legacy gxt-2.2.4-gwt22 library. 
 
+[GWT 2.5.1](https://www.gwtproject.org/versions.html) : Google Web Tooklit (GWT) was a Google sponsored project which fused the server back-end and browser front-end code to converge on the Java programming language. It also came with its own simplified data transport technology [GWT RPC](https://www.gwtproject.org/doc/latest/tutorial/RPC.html)
+
 Running via Maven in GWT Dev Mode
 ---------------------------------
 
@@ -151,6 +153,22 @@ rm gxt-2.2.4-gwt22.jar.zip
 cd ..
 mkdir local-maven-repo
 sh ./regiser-jars.sh
+```
+
+#### Image Cache Location
+
+##### Windows
+
+```
+mkdir /cygdrive/c/wscache
+mkdir /cygdrive/c/wscache/smallpic
+```
+
+##### Unix
+
+```
+mkdir /var/lib/hierarchycms/
+mkdir /var/lib/hierarchycms/smallpic
 ```
 
 ### Start Dependencies
