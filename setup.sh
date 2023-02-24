@@ -1,6 +1,10 @@
 SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 cd $SCRIPT_DIR
 
+if [ ! -d "./ejabberd/lib" ]; then	 
+	mkdir ./ejabberd/lib
+fi 
+
 if [ "$(expr substr $(uname -s) 1 9)" == "CYGWIN_NT" ]; then
 	if [ ! -f "/bin/apt-cyg" ]; then
 		lynx -source rawgit.com/transcode-open/apt-cyg/master/apt-cyg > apt-cyg
