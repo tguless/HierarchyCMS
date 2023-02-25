@@ -1,7 +1,9 @@
 HierarchyCMS
 =================
 
-Overview
+[TOC]
+
+Project Overview
 --------
 
 HierarchyCMS was developed in the 2010-2011 timeframe to experiment with building a social network platform that relies on its community to contribute to its database schema. 
