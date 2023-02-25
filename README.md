@@ -18,7 +18,7 @@ Facebook has since introduced the idea of "profiles" to achieve the same.
 
 ## What is with the Name?
 
-CMS short for Content Management System is an ever common term used for projects like WordPress and Drupal. 
+CMS short for Content Management System is an ever common term used for projects like [WordPress](https://wordpress.com/) and [Drupal](https://www.drupal.org/home). 
 
 Content Management Systems all have an extensible system for creating new content types, and that's where this project best fit the concept of a CMS. 
 
@@ -86,29 +86,30 @@ Using a graph database engine like [Neo4j](https://neo4j.com/) can ensure that t
 
 ### Real Time Messaging (Live Chat)
 
-[EjabberD](https://www.ejabberd.im/) : Server platform to enable real time messaging using XMPP)
+[EjabberD](https://www.ejabberd.im/) : Server platform developed in Erlang to enable real time messaging using the [XMPP](https://xmpp.org/about/technology-overview/) protocol.
 
-[Smack](https://github.com/igniterealtime/Smack) : Talk to EjabberD XMPP server for profile creation)
+[Smack](https://github.com/igniterealtime/Smack) : Talk to EjabberD [XMPP](https://xmpp.org/about/technology-overview/) server for profile creation.
 
-[EmiteGWT/emite](https://github.com/EmiteGWT/emite) : An XMPP Library for GWT environment to allow real-time messaging among users
+[EmiteGWT/emite](https://github.com/EmiteGWT/emite) : An [XMPP](https://xmpp.org/about/technology-overview/) Library for GWT environment to allow real-time messaging among users.
 
-[EmiteGWT/hablar](https://github.com/EmiteGWT/hablar) : A GUI front end for Emite
+[EmiteGWT/hablar](https://github.com/EmiteGWT/hablar) : A GUI front end for Emite.
 
 ### Security
 
-[SimpleCaptcha Java Library](https://simplecaptcha.sourceforge.net/) (captcha)
+[SimpleCaptcha Java Library](https://simplecaptcha.sourceforge.net/) : Provides captcha functionality via a simple to deploy Java Servlet.
 
 ### Video
 
-[PHP-FFMpeg](https://github.com/PHP-FFMpeg/PHP-FFMpeg) : API used for getting metadata of video files
+[PHP-FFMpeg](https://github.com/PHP-FFMpeg/PHP-FFMpeg) : API used for getting metadata of video files. 
+NOTE - this may now be replaceable with the [ffmpeg-cli-wrapper](https://github.com/bramp/ffmpeg-cli-wrapper) Java library
 
-[php-java-bridge](https://sourceforge.net/projects/php-java-bridge/) : Java bridge to invoke the php-ffmpeg API
+[php-java-bridge](https://sourceforge.net/projects/php-java-bridge/) : A bridge to invoke the php-ffmpeg API from Java code. 
 
-[Letractively/gwt-html5-video](https://github.com/Letractively/gwt-html5-video) : A browser agnostic video playback widget for GWT
+[Letractively/gwt-html5-video](https://github.com/Letractively/gwt-html5-video) : A browser agnostic video playback widget for GWT.
 
 ### Multi File Uploads
 
-[gwt-fileapi](https://code.google.com/archive/p/gwt-fileapi/) : File upload GWT widget which supports multi-file uploads
+[gwt-fileapi](https://code.google.com/archive/p/gwt-fileapi/) : File upload GWT widget which supports multi-file uploads.
 
 [swfupload-gwt](https://code.google.com/archive/p/swfupload-gwt/) : Fallback for non HTML 5 browsers - this is legacy junk that can be removed since legacy browsers lost users / reached EOL and since Adobe Flash reached End Of Life. 
 
@@ -116,12 +117,16 @@ Using a graph database engine like [Neo4j](https://neo4j.com/) can ensure that t
 
 [Sencha GXT](https://www.sencha.com/products/gxt/) : Enabled a rich GUI experience similar to full desktop apps of the time using the legacy gxt-2.2.4-gwt22 library. 
 
-[GWT 2.5.1](https://www.gwtproject.org/versions.html) : Google Web Tooklit (GWT) was a Google sponsored project which fused the server back-end and browser front-end code to converge on the Java programming language. It also came with its own simplified data transport technology [GWT RPC](https://www.gwtproject.org/doc/latest/tutorial/RPC.html)
+[GWT 2.5.1](https://www.gwtproject.org/versions.html) : Google Web Tooklit (GWT) was a Google sponsored project which fused the server back-end and browser front-end code to converge on the Java programming language. It also came with its own simplified data transport technology [GWT RPC](https://www.gwtproject.org/doc/latest/tutorial/RPC.html).
 
-Running via Maven in GWT Dev Mode
+Running the App
 ---------------------------------
 
 ### Prerequisites
+
+#### Cygwin (only needed for Windows)
+
+The important setup.sh shell (bash) script provided below needs Cygwin to run on Windows.
 
 #### Maven
 
@@ -131,13 +136,13 @@ Download and install maven
 
 Only tested with Oracle JDK 8 to date
 
-#### Required Folders Set Up
+#### Required Folders Set Up (Run in Cygwin on Windows)
 
 ```
 sh setup.sh
 ```
 
-### Start Dependencies
+### Start the Dependency Services
 
 First we need to make sure mysql and ejabberd are up and running. 
 
@@ -145,7 +150,7 @@ First we need to make sure mysql and ejabberd are up and running.
 docker-compose run mysql ejabberd
 ```
 
-### Run the Application in GWT Dev Mode
+### Compile and Run the Application in GWT Dev Mode
 
 In the directory WebApp-Maven:
 
@@ -174,3 +179,19 @@ Click *Launch Default Browser* to open it in GWT Dev Mode.
 
 Your changes to client GWT Java code will become immediately available as soon as you reloaded the page in the browser.
 
+### Schedule Process for Transcoding Newly Uploaded Videos for Streaming
+
+NOTE: back in 2011 there wasn't a single file format that would work universally in the HTML video tag across all browsers. 
+
+I had resorted to keeping two different transcoded versions of the uploaded video file for distribution, 
+
+1. [webm](https://en.wikipedia.org/wiki/WebM) : Firefox/Chrome and 
+2. [MP4](https://en.wikipedia.org/wiki/MP4_file_format) ([H.264](https://en.wikipedia.org/wiki/Advanced_Video_Coding))  : Safari/IE
+
+Example crontab entry to transcode the video file twice for streaming. 
+
+```
+/var/lib/hierarchycms/encode.sh >/dev/null 2>&1
+```
+
+Suggested contents of encode.sh are provided as a part of this repo. 

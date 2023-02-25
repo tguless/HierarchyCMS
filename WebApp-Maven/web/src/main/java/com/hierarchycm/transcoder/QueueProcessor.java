@@ -5,11 +5,8 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
-import java.io.RandomAccessFile;
-import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashMap;
 
@@ -17,10 +14,8 @@ import com.hierarchycm.gxt.client.model.ObjectType;
 import com.hierarchycm.gxt.server.ImageUtil;
 import com.hierarchycm.gxt.server.model.SimpleFile;
 import com.hierarchycm.gxt.shared.ProjectConstants;
-import com.hierarchycm.mysql.DbConnection;
 import com.hierarchycm.mysql.Dao.ObjectInstanceDAO;
 import com.hierarchycm.mysql.Dao.ObjectModelDAO;
-
 
 /*
 http://stackoverflow.com/questions/5487085/ffmpeg-covert-html-5-video-not-working
@@ -28,12 +23,9 @@ on windows you need the environment variable FFMPEG_DATADIR=C:/utils/ffmpegprese
 On ubuntu the presets are all in /usr/share/ffmpeg					     
 */
 
-
 public class QueueProcessor {
 	
 		private static HashMap <String, ArrayList<String>> commandParamsHm = new HashMap<String, ArrayList<String>>();
-	
-		//Select all object_types that have a object_type_category_ky of video
 		public static void main(String[] args)  {
 			try {
 				ArrayList<ObjectType> objectTypes = ObjectModelDAO.getCategoryTypes(ProjectConstants.videoCategory);
@@ -43,14 +35,8 @@ public class QueueProcessor {
 					while ( nextInLine != null) {					
 						try {
 							ObjectInstanceDAO.changeStatus(nextInLine, "IP");
-							
 							transcodeAndWriteToDb(nextInLine);
-							
-							//notifyOwner
-												
-							nextInLine = ObjectInstanceDAO.getNextPendingInstance(ot);		
-							
-						
+							nextInLine = ObjectInstanceDAO.getNextPendingInstance(ot);
 						} catch (Exception e) {
 							e.printStackTrace();
 							ObjectInstanceDAO.changeStatus(nextInLine, "ERR");
@@ -60,7 +46,6 @@ public class QueueProcessor {
 				}
 			} catch (Exception e) {
 				e.printStackTrace();
-				
 			}
 		}
 	
@@ -212,7 +197,6 @@ public class QueueProcessor {
 						System.out.println("Trouble closing stream and flushing");
 					}
 				}
-		      		      
 		}
 		
 		public static void startTheReader(InputStream inFromDB, OutputStream outToCommand) {

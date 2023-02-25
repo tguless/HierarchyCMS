@@ -59,17 +59,11 @@ public class ImageView extends ContentPanel implements InstanceViewPanel {
 	
 	private String originalImagePath = null;
 	private String originalName = null;
-	
-	private int rotateAmount = 0; 
-	
+	private int rotateAmount = 0;
 	private ObjectTypeTree ott;
 	private ObjectInstanceViewerPanel parentPanel;
-	
 	private InputListWidget inputListWidget;
-	
 	com.extjs.gxt.ui.client.util.Scroll scroll = null;
-	
-	
 	private Listener<ComponentEvent> mouseMoveListener = 
 		new Listener<ComponentEvent>() {
 		public void handleEvent(ComponentEvent ce) {
@@ -455,8 +449,6 @@ public class ImageView extends ContentPanel implements InstanceViewPanel {
 		
 	}
 
-	
-	
 	@Override
 	public void setObjectTypeTree(ObjectTypeTree ott) {
 		this.ott = ott;		
@@ -468,8 +460,7 @@ public class ImageView extends ContentPanel implements InstanceViewPanel {
 			tagsEnabled=true;							
 			
 		}				
-	} 
-	
+	}
 	
 	private InputListWidget getInputListWidget() {
 		if (inputListWidget==null) {

@@ -39,123 +39,13 @@ import com.hierarchycm.gxt.client.viewers.ObjectInstanceViewerPanel;
 public class InputListWidget extends Composite {
     List<String> itemsSelected = new ArrayList<String>();
 
-
-
     ArrayList <Suggestion> suggestions = getAlSuggestion();
 
-
     private MySuggestOracle getSuggestions() {
-
-
         return new MySuggestOracle();
-    	/*
-    	MultiWordSuggestOracle oracle = new MultiWordSuggestOracle();
-        oracle.add(new MySuggestion("Amy Kesic");
-        oracle.add(new MySuggestion("Jason Weston");
-        oracle.add(new MySuggestion("Dave Johnson");
-        oracle.add(new MySuggestion("Paul Hammant");
-        oracle.add(new MySuggestion("Jesse Kuhnert");
-        oracle.add(new MySuggestion("Ben Alex");
-        oracle.add(new MySuggestion("Tom Bender");
-        oracle.add(new MySuggestion("Alexandru Popescu");
-        oracle.add(new MySuggestion("Kaveh Arabfakhry");
-        oracle.add(new MySuggestion("Steven Hong");
-        oracle.add(new MySuggestion("Jason van Zyl");
-        oracle.add(new MySuggestion("Alex Vauthey");
-        oracle.add(new MySuggestion("Kiran Karnati");
-        oracle.add(new MySuggestion("Kalpana Nagireddy");
-        oracle.add(new MySuggestion("Ramnivas Laddad");
-        oracle.add(new MySuggestion("ArjŽ Cahn");
-        oracle.add(new MySuggestion("Amy Anne Rasberry");
-        oracle.add(new MySuggestion("Vincent Stoessel");
-        oracle.add(new MySuggestion("Steven Leija");
-        oracle.add(new MySuggestion("Brian Burke");
-        oracle.add(new MySuggestion("John Ipson");
-        oracle.add(new MySuggestion("Candy Chastain Mielke");
-        oracle.add(new MySuggestion("Scott Mark");
-        oracle.add(new MySuggestion("Dov B. Katz");
-        oracle.add(new MySuggestion("Alef Arendsen");
-        oracle.add(new MySuggestion("David Jencks");
-        oracle.add(new MySuggestion("Alexey Belikov");
-        oracle.add(new MySuggestion("Bryan Vial");
-        oracle.add(new MySuggestion("Dror Bereznitsky");
-        oracle.add(new MySuggestion("David Moskowitz");
-        oracle.add(new MySuggestion("Oscar Chan");
-        oracle.add(new MySuggestion("Sergey Sundukovskiy");
-        oracle.add(new MySuggestion("John Newton");
-        oracle.add(new MySuggestion("Chris Buzzetta");
-        oracle.add(new MySuggestion("Peter Svensson");
-        oracle.add(new MySuggestion("Riccardo Ferretti");
-        oracle.add(new MySuggestion("Christian Parker");
-        oracle.add(new MySuggestion("Ann (Jaksa) Skaehill");
-        oracle.add(new MySuggestion("Justin Blue");
-        oracle.add(new MySuggestion("Sean Dawson");
-        oracle.add(new MySuggestion("Devaraj NS");
-        oracle.add(new MySuggestion("Robert Gadd");
-        oracle.add(new MySuggestion("Diego Campodonico");
-        oracle.add(new MySuggestion("Bryan Field-Elliot");
-        oracle.add(new MySuggestion("Scott Delap");
-        oracle.add(new MySuggestion("Kevin Koster");
-        oracle.add(new MySuggestion("Fernand Galiana");
-        oracle.add(new MySuggestion("Christopher Shuler");
-        oracle.add(new MySuggestion("Geir Magnusson Jr");
-        oracle.add(new MySuggestion("Tyler Hansen");
-        oracle.add(new MySuggestion("Olivier Lamy");
-        oracle.add(new MySuggestion("J. Thomas Richardson");
-        oracle.add(new MySuggestion("Russell Beattie");
-        oracle.add(new MySuggestion("Martin Ouellet");
-        oracle.add(new MySuggestion("Scott Ferguson");
-        oracle.add(new MySuggestion("Guillaume Laforge");
-        oracle.add(new MySuggestion("Eric Weidner");
-        oracle.add(new MySuggestion("Troy McKinnon");
-        oracle.add(new MySuggestion("Max Hays");
-        oracle.add(new MySuggestion("Phillip Rhodes");
-        oracle.add(new MySuggestion("Eugene Kulechov");
-        oracle.add(new MySuggestion("Bob Johnson");
-        oracle.add(new MySuggestion("Richard Tucker, PMP");
-        oracle.add(new MySuggestion("Mats Henricson");
-        oracle.add(new MySuggestion("Floyd Marinescu");
-        oracle.add(new MySuggestion("Ed Burns");
-        oracle.add(new MySuggestion("Michael Root");
-        oracle.add(new MySuggestion("Dana Busch");
-        oracle.add(new MySuggestion("Borislav Roussev");
-        oracle.add(new MySuggestion("Harris Tsim");
-        oracle.add(new MySuggestion("Jason Thrasher");
-        oracle.add(new MySuggestion("Soo-il Kim");
-        oracle.add(new MySuggestion("Lindsey Bowman");
-        oracle.add(new MySuggestion("Ganesh Hariharan");
-        oracle.add(new MySuggestion("Judy Herilla");
-        oracle.add(new MySuggestion("Jevgeni Kabanov");
-        oracle.add(new MySuggestion("Craig Whitacre");
-        oracle.add(new MySuggestion("Paul M. Garvey");
-        oracle.add(new MySuggestion("Jeremy Whitlock");
-        oracle.add(new MySuggestion("Fabrizio Giustina");
-        oracle.add(new MySuggestion("Todd Fredrich");
-        oracle.add(new MySuggestion("Matt Stine");
-        oracle.add(new MySuggestion("Jo‹o Vitor Lacerda Guimar‹es");
-        oracle.add(new MySuggestion("Yassine Hinnach");
-        oracle.add(new MySuggestion("Chris Huston");
-        oracle.add(new MySuggestion("Jodi Behrens-Stark");
-        oracle.add(new MySuggestion("John Greenhill");
-        oracle.add(new MySuggestion("Roy Porter");
-        oracle.add(new MySuggestion("Paul Tuckey");
-        oracle.add(new MySuggestion("Arjun Ram");
-        oracle.add(new MySuggestion("Merrill Bennett");
-        oracle.add(new MySuggestion("James Richards");
-        oracle.add(new MySuggestion("Franz Garsombke");
-        oracle.add(new MySuggestion("Kimberly Horan");
-        oracle.add(new MySuggestion("Hani Suleiman");
-        oracle.add(new MySuggestion("Thomas Dudziak");
-        oracle.add(new MySuggestion("Andrew Penrose");
-        oracle.add(new MySuggestion("Igor Polyakov");
-        oracle.add(new MySuggestion("Steve Runkel");
-
-        return oracle;
-        */
     }
 
     public class MySuggestion implements Suggestion {
-
 
         private String value;
         private String name;
@@ -183,8 +73,6 @@ public class InputListWidget extends Composite {
     private ArrayList <Suggestion> getAlSuggestion() {
         // TODO Auto-generated method stub
         ArrayList <Suggestion> oracle = new ArrayList<Suggestion>();
-
-
 
         oracle.add(new MySuggestion("Amy Kesic","1"));
         oracle.add(new MySuggestion("Jason Weston","1"));
@@ -289,8 +177,6 @@ public class InputListWidget extends Composite {
         return oracle;
     }
 
-
-
     public void setWidth(int width) {
         //super.setWidth(width+"px");
         //list.setWidth(width+"px");
@@ -307,7 +193,6 @@ public class InputListWidget extends Composite {
         itemBox.setWidth(width);
         Window.alert("Setting width to" + width);
     }
-
 
     final BulletList list;
     FlowPanel panel;
@@ -378,21 +263,6 @@ public class InputListWidget extends Composite {
 
         panel.getElement().setAttribute("onclick", "document.getElementById('suggestion_box').focus()");
         box.setFocus(true);
-        /* Div structure after a few elements have been added:
-            <ul class="token-input-list-facebook">
-                <li class="token-input-token-facebook">
-                    <p>What's New Scooby-Doo?</p>
-                    <span class="token-input-delete-token-facebook">x</span>
-                </li>
-                <li class="token-input-token-facebook">
-                    <p>Fear Factor</p>
-                    <span class="token-input-delete-token-facebook">x</span>
-                 </li>
-                 <li class="token-input-input-token-facebook">
-                     <input type="text" style="outline-color: -moz-use-text-color; outline-style: none; outline-width: medium;"/>
-                 </li>
-            </ul>
-         */
     }
 
     private void deselectItem(final TextBox itemBox, final BulletList list) {
@@ -490,37 +360,6 @@ public class InputListWidget extends Composite {
 
             instHierCommand.execute(objInstLinkId, depth, filterType);
 
-    	    /*
-    	    RequestBuilder rb =
-    	      new RequestBuilder(RequestBuilder.GET,
-    	                         "/FriendSuggestions?" + suggestRequest.getQuery());
-
-
-    	    try {
-				rb.sendRequest(null, new RequestCallback() {
-				  @Override
-				  public void onError(com.google.gwt.http.client.Request request, Throwable exception) {
-					  Window.alert("Got Error");
-				    // Handle error
-				  }
-
-				  @Override
-				  public void onResponseReceived(com.google.gwt.http.client.Request rbRequest, com.google.gwt.http.client.Response response) {
-					  SuggestOracle.Response r = new SuggestOracle.Response();
-					  r.setSuggestions(suggestions);
-					  callback.onSuggestionsReady(suggestRequest, r);
-
-				    // Fill r based on suggestions in the response parameter.
-
-				    callback.onSuggestionsReady(suggestRequest, r);
-				  }
-
-				});
-			} catch (RequestException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			*/
         }
     }
 }
