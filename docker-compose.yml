@@ -45,6 +45,8 @@ services:
     ports:
       - '5222:5222'
       - '5280:5280'
+    networks:
+      - dev-network
     depends_on:
       - mysql
     volumes:

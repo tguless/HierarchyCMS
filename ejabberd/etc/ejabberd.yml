@@ -41,9 +41,36 @@ acl:
     user_regexp: 
       - ""
 auth_method: odbc
+
+
 hosts: 
   - "localhost"
   - "shareshowandtell.com"
+
+host_config:
+  shareshowandtell.com:
+    sql_port: 3306
+    sql_type: mysql
+    sql_server: "mysql"
+    sql_database: "ejabberd"
+    sql_username: "root"
+    sql_password: "mysqlpass"
+    sql_pool_size: 3
+    auth_method: sql
+    default_db: sql
+
+host_config:
+  localhost:
+    sql_port: 3306
+    sql_type: mysql
+    sql_server: "mysql"
+    sql_database: "ejabberd"
+    sql_username: "root"
+    sql_password: "mysqlpass"
+    sql_pool_size: 3
+    auth_method: sql
+    default_db: sql
+
 language: "en"
 listen: 
   - 
@@ -115,9 +142,3 @@ s2s_use_starttls: true
 shaper: 
   normal: 1000
   fast: 50000
-sql_database: "ejabberd"
-sql_password: "mysqlpass"
-sql_port: 3306
-sql_server: "mysql"
-sql_type: mysql
-sql_username: "root"
