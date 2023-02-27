@@ -62,6 +62,12 @@ We also had a baby girl coming our way, and my time was better spent building ap
 
 Additionally, Google signaled the end of GWT by promoting its replacement [DART](https://dart.dev/). 
 
+GWT has remained alive and healthy with platforms like [VAADIN](https://vaadin.com/) and [Sencha GXT](https://www.sencha.com/products/gxt/) heavily built on top of it. 
+
+There is also ongoing development of the platform as evidenced [here](https://www.gwtproject.org/release-notes.html?) with the latest release as late as June 9, 2022. 
+
+Regardless, platforms like [React Native](https://reactnative.dev/) which can cross compile to Android or iOS native code, platforms like GWT have taken a back-seat for shops that want to write platform agnostic yet performant code.
+
 ## Why Was it Mothballed for So Long?
 
 ### Docker Not Available Yet To Create Repeatable Environments
