@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <module rename-to='server'>
     <inherits name="com.google.gwt.user.User"/>
-
     <inherits name="com.hierarchycm.shared"/>
-
     <source path="server"/>
 </module>

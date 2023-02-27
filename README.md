@@ -60,6 +60,8 @@ I came to the realization that I would never be able to catch up with social med
 
 We also had a baby girl coming our way, and my time was better spent building applications for paying customers. 
 
+Additionally, Google signaled the end of GWT by promoting its replacement [DART](https://dart.dev/). 
+
 ## Why Was it Mothballed for So Long?
 
 ### Docker Not Available Yet To Create Repeatable Environments
@@ -185,7 +187,7 @@ Your changes to client GWT Java code will become immediately available as soon a
 
 NOTE: back in 2011 there wasn't a single file format that would work universally in the HTML video tag across all browsers. 
 
-I had resorted to keeping two different transcoded versions of the uploaded video file for distribution, 
+I had resorted to keeping two different transcoded versions of the uploaded video file for digital distribution, 
 
 1. [webm](https://en.wikipedia.org/wiki/WebM) : Firefox/Chrome and 
 2. [MP4](https://en.wikipedia.org/wiki/MP4_file_format) ([H.264](https://en.wikipedia.org/wiki/Advanced_Video_Coding))  : Safari/IE
@@ -198,7 +200,7 @@ Example crontab entry to transcode the video file twice for streaming.
 
 Suggested contents of encode.sh are provided as a part of this repo. 
 
-### Administer EjabberD
+### Set Up Super User in EjabberD to Enable Account Creation through Site Registration
 
 Create an admin account in ejabberd
 
