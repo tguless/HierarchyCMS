@@ -1,5 +1,6 @@
 acme:
   auto: false
+
 access: 
   announce: 
     admin: allow
@@ -32,14 +33,33 @@ access:
     all: deny
   s2s_shaper: 
     all: fast
+s2s_access: s2s
 acl: 
   admin: 
     user: 
       - 
-        "tguless": "shareshowandtell.com"
+        "admin": "shareshowandtell.com"
+        "admin": "localhost"
   local: 
     user_regexp: 
       - ""
+access_rules:
+  configure:
+    allow: admin
+  c2s:
+    - deny: blocked
+    - allow
+  xmlrpc_access:
+    - allow: xmlrpc_bot
+  s2s:
+    - allow: trusted_servers
+  register: 
+    - deny 
+    - allow: admin
+  registrant: 
+    - allow: muc_admin
+    - deny: all
+
 auth_method: odbc
 
 
@@ -79,7 +99,12 @@ listen:
     starttls: true
     max_stanza_size: 65536
     shaper: c2s_shaper
-    access: c2s
+    access: c2s    
+    protocol_options: 
+      - "no_sslv2"
+      - "no_sslv3"
+    #protocol_options: "no_sslv2, no_sslv3, no_tlsv1,no_tlsv1_1"
+    #protocol_options: ""no_sslv3|cipher_server_preference|no_compression" - default
   - 
     port: 5269
     module: ejabberd_s2s_in
@@ -90,7 +115,7 @@ listen:
       "/bosh": mod_bosh
       "/admin": ejabberd_web_admin
     port: 5280
-    module: ejabberd_http
+    module: ejabberd_http    
 loglevel: 4
 modules: 
   mod_adhoc: []
@@ -126,7 +151,9 @@ modules:
     welcome_message: 
       subject: "Welcome!"
       body: "Welcome to a Jabber service powered by Debian. For information about Jabber visit http://www.jabber.org"
-    access_from: registrant
+    access_from: 
+      - allow: admin
+      - deny
   mod_roster: 
     db_type: sql
   mod_stats: []

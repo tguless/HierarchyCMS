@@ -7,13 +7,7 @@ import java.util.Hashtable;
 import java.util.Iterator;
 import java.util.Map;
 
-import org.jivesoftware.smack.ConnectionConfiguration;
-import org.jivesoftware.smack.PacketCollector;
-import org.jivesoftware.smack.Roster;
-import org.jivesoftware.smack.RosterEntry;
-import org.jivesoftware.smack.SmackConfiguration;
-import org.jivesoftware.smack.XMPPConnection;
-import org.jivesoftware.smack.XMPPException;
+import org.jivesoftware.smack.*;
 import org.jivesoftware.smack.filter.AndFilter;
 import org.jivesoftware.smack.filter.PacketFilter;
 import org.jivesoftware.smack.filter.PacketIDFilter;
@@ -82,21 +76,27 @@ public class XmppUtil {
     }
     public XMPPConnection connectToXMPP (String login, String password) throws XMPPException {
         ConnectionConfiguration config = new ConnectionConfiguration(xmppServer, 5222);
+
         config.setCompressionEnabled(true);
         config.setSASLAuthenticationEnabled(true);
+        SASLAuthentication.supportSASLMechanism("PLAIN", 0);
 
         XMPPConnection connection = new XMPPConnection(config);
         // Connect to the server
         try {
+            connection.connect();
             connection.login(login, password, "SomeResource");
         } catch (XMPPException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
 
-        System.out.println("Connected to XMPP server");
-
-        return connection;
+        if (connection.isConnected()) {
+            System.out.println("Connected to XMPP server");
+            return connection;
+        } else {
+            return null;
+        }
     }
 
     public void changePubSubNickname(XMPPConnection conn, String newNick) {
@@ -124,7 +124,7 @@ public class XmppUtil {
             changePubSubNickname(conn,  nickname);
             changeVcardNick(conn, nickname);
         } finally {
-            conn.close();
+            conn.disconnect();
         }
     }
 
@@ -189,9 +189,13 @@ public class XmppUtil {
                 errorMessage = "Error message is null";
         }
 
-        System.out.println("Failed creating XMPP User: " + userId + " with password: " + password + " got error" + errorMessage);
+        if (!errorMessage.equals("")) {
+            System.out.println("Failed creating XMPP User: " + userId + " with password: " + password + " got error" + errorMessage);
+        } else {
+            System.out.println("User created successfully");
+        }
 
-        connection.close();
+        connection.disconnect();
     }
 
     public IQ getXMPPRegistrationForm () throws XMPPException {
@@ -267,7 +271,7 @@ public class XmppUtil {
 
         }
 
-        connection.close();
+        connection.disconnect();
 
         return result;
     }
@@ -275,14 +279,14 @@ public class XmppUtil {
     public void changeXmppPassword(String login, String password, String newPassword) throws XMPPException {
         XMPPConnection connection = connectToXMPP(login, password);
         connection.getAccountManager().changePassword(newPassword);
-        connection.close();
+        connection.disconnect();
     }
 
     public void addBuddy(String login, String password, String groupName,  String buddyAlias, String buddyId) throws XMPPException {
         XMPPConnection connection = connectToXMPP(login,password);
         Roster roster = connection.getRoster();
         roster.createEntry(buddyId, buddyAlias, new String[]{groupName});
-        connection.close();
+        connection.disconnect();
     }
 
     public void removeBuddy(String login, String password, String buddyId) throws XMPPException {
@@ -290,12 +294,12 @@ public class XmppUtil {
         Roster roster = connection.getRoster();
         RosterEntry buddy = roster.getEntry(buddyId);
         roster.removeEntry(buddy);
-        connection.close();
+        connection.disconnect();
     }
 
     public void removeXmppUser(String login, String password) throws XMPPException {
         XMPPConnection connection = connectToXMPP(login,password);
         connection.getAccountManager().deleteAccount();
-        connection.close();
+        connection.disconnect();
     }
 }

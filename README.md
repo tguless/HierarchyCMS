@@ -197,3 +197,18 @@ Example crontab entry to transcode the video file twice for streaming.
 ```
 
 Suggested contents of encode.sh are provided as a part of this repo. 
+
+### Administer EjabberD
+
+Create an admin account in ejabberd
+
+```
+docker exec -ti hierarchycms-ejabberd-1 /home/ejabberd/bin/ejabberdctl/ejabberdctl register admin localhost <PUT YOUR PASSWORD HERE>
+```
+
+You can navigate to http://localhost:5280/admin/ to administer EjabberD using the login admin and the password you supplied to the command line above.
+
+The app expects these credentials in the MySQL table hierarchy_cm.app_config under the properties xmppAdminPassword and xmppAdminLogin
+
+
+

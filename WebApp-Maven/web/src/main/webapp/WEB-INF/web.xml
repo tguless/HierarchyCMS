@@ -106,7 +106,7 @@
   		<servlet-class>de.spieleck.servlets.ProxyServlet</servlet-class>
   		<init-param>
             <param-name>remotePath</param-name>
-            <param-value>/http-bind</param-value>
+            <param-value>/bosh</param-value>
   		</init-param>
   		<init-param>            
             <param-name>remotePort</param-name>

@@ -5355,10 +5355,9 @@ DELIMITER ;
 
 LOCK TABLES `app_config` WRITE;
 /*!40000 ALTER TABLE `app_config` DISABLE KEYS */;
-INSERT INTO `app_config` VALUES ('currentEjabberSchema','ejabberd'),('DEFAULT_IMAGE','/var/lib/tomcat6/webapps/ROOT/images/defaultFolder.png'),('DEFAULT_PERSONALITY_LINK_TYPE_ID','9'),('DEFAULT_PERSONALITY_TYPE','1'),('DEFAULT_POPUP_HEIGHT','600'),('DEFAULT_POPUP_WIDTH','600'),('ejabberConnectionParams','?zeroDateTimeBehavior=convertToNull'),('ejabberDbConnectionUrl','jdbc:mysql://localhost:3306/'),('ejabberDbPassword','mysqlpass'),('ejabberDbUser','root'),('IDENTITY_ROOT','3'),('OBJ_INSTANCE_FETCH_DEPTH','5'),('xmppServer','127.0.0.1');
+INSERT INTO `app_config` VALUES ('currentEjabberSchema','ejabberd'),('DEFAULT_IMAGE','/var/lib/tomcat6/webapps/ROOT/images/defaultFolder.png'),('DEFAULT_PERSONALITY_LINK_TYPE_ID','9'),('DEFAULT_PERSONALITY_TYPE','1'),('DEFAULT_POPUP_HEIGHT','600'),('DEFAULT_POPUP_WIDTH','600'),('ejabberConnectionParams','?zeroDateTimeBehavior=convertToNull'),('ejabberDbConnectionUrl','jdbc:mysql://localhost:3306/'),('ejabberDbPassword','mysqlpass'),('ejabberDbUser','root'),('IDENTITY_ROOT','3'),('OBJ_INSTANCE_FETCH_DEPTH','5'),('xmppAdminLogin','admin'),('xmppAdminPassword','password1234'),('xmppServer','localhost');
 /*!40000 ALTER TABLE `app_config` ENABLE KEYS */;
 UNLOCK TABLES;
-/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 LOCK TABLES `object_type_category` WRITE;
 /*!40000 ALTER TABLE `object_type_category` DISABLE KEYS */;
